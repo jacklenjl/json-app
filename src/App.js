@@ -9,7 +9,7 @@ function App() {
   const [dataType, setDataType] = useState("");
   const [finalJson, setJsonFinal] = useState("");
 
-  let JsonParseEt = () => {
+  let jsonParseEt = () => {
     if (!textAreaOne) {
       alert("Please add input");
       return;
@@ -53,7 +53,7 @@ function App() {
           </div>
         </Col>
         <Col md="2">
-          <Button className="jsonParseBtn" color="danger" onClick={JsonParseEt}>
+          <Button className="jsonParseBtn" color="danger" onClick={jsonParseEt}>
             Json Parse
           </Button>
           <br />
