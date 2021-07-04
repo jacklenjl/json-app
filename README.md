@@ -16,7 +16,7 @@ You will also see any lint errors in the console.
 
 ## JSON Input
 
-<img src='https://ibb.co/F6ZY38m'>
+<a href="https://ibb.co/F6ZY38m"><img src="https://i.ibb.co/K64shVb/Screenshot-2021-07-04-at-4-11-06-PM.png" alt="Screenshot-2021-07-04-at-4-11-06-PM" border="0"></a><br /><a target='_blank' href='https://imgbb.com/'>upload image</a><br />
 
 
 
