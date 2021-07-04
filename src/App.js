@@ -20,7 +20,6 @@ function App() {
         let typeTest = Array.isArray(test) ? "Array" : "";
 
         if (!typeTest) typeTest = typeof test;
-        // console.log("input", textAreaOne, typeTest);
         setDataType(typeTest);
         setJsonFinal(test);
       } catch (e) {
