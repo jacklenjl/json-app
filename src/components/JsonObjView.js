@@ -3,35 +3,45 @@ const JsonObjView = (props) => {
   console.log("props", props);
   let dataType = props.objType;
   let test = props.jsonData;
+  let finalArr = [];
+  let arrTemp = [];
 
-  let JsonRender = (props) => {
-    let test = props.test;
-
-    let jsonOutView = Object.keys(test).map((x, index) => {
-      return (
-        <table key={index}>
-          <tbody>
-            <tr>
-              <td className="objKey">
-                <div contentEditable={false}>{x}</div>
-              </td>
-              <td>:</td>
-              <td className="jsonVal">
-                <div contentEditable={false}>{test[x]}</div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      );
-    });
-
-    return jsonOutView;
-  };
+  function resursiveJson(test) {
+    for (let prop in test) {
+      if (typeof test[prop] == "object") {
+        arrTemp.push(
+          <div key={prop} contentEditable={false}>
+            Object: {prop}
+          </div>
+        );
+        resursiveJson(test[prop]);
+      } else {
+        arrTemp.push(
+          <table key={prop}>
+            <tbody>
+              <tr>
+                <td className="objKey">
+                  <div contentEditable={false}>{prop}</div>
+                </td>
+                <td>:</td>
+                <td className="jsonVal">
+                  <div contentEditable={false}>{test[prop]}</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        );
+      }
+    }
+  }
+  resursiveJson(test);
+  finalArr = arrTemp;
+  
 
   return (
-    <div>
+    <div className="jsonObj">
       {dataType ? <div className="dataType">DataType: {dataType}</div> : ""}
-      <JsonRender test={test} />
+      {finalArr}
     </div>
   );
 };

@@ -31,5 +31,8 @@ input value={"name":"John", "age":30, "city":"New York"}
 
 input value=[{"name":"John", "age":30, "city":"New York"},{"name":"John", "age":30, "city":"New York"}]
 
+<a href="https://ibb.co/rMj702k"><img src="https://i.ibb.co/WFhx5vn/Screenshot-2021-07-04-at-6-27-09-PM.png" alt="Screenshot-2021-07-04-at-6-27-09-PM" border="0"></a>
 
-
+input valye=[{"name":"John", "age":30, "city":"New York"},
+{"obj":{"employee":{"name":"John", "age":30, "city":"New York"}}}
+]

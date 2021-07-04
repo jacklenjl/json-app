@@ -5,27 +5,45 @@ const ArrayView = (props) => {
   let dataType = props.objType;
   let test = props.jsonData;
   let finalArr = [];
-  test.map((arrTest) => {
-    let jsonOutView = Object.keys(arrTest).map((x, index) => {
-      return (
-        <table key={index}>
-          <tbody>
-            <tr>
-              <td className="objKey">
-                <div contentEditable={false}>{x}</div>
-              </td>
-              <td>:</td>
-              <td className="jsonVal">
-                <div contentEditable={false}>{arrTest[x]}</div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      );
-    });
-    finalArr.push(jsonOutView);
-  });
+  let arrTemp = [];
+  function resursiveJson(test) {
+    for (let prop in test) {
+      if (typeof test[prop] == "object") {
+        arrTemp.push(
+          <div key={prop} contentEditable={false}>
+            Object: {prop}
+          </div>
+        );
+        resursiveJson(test[prop]);
+      } else {
+        arrTemp.push(
+          <table key={prop}>
+            <tbody>
+              <tr>
+                <td className="objKey">
+                  <div contentEditable={false}>{prop}</div>
+                </td>
+                <td>:</td>
+                <td className="jsonVal">
+                  <div contentEditable={false}>{test[prop]}</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        );
+      }
+    }
+  }
 
+  test.map((arrTest, index) => {
+    arrTemp.push(
+      <div key={index} contentEditable={false}>
+        Index: {index}
+      </div>
+    );
+    resursiveJson(arrTest);
+  });
+  finalArr = arrTemp;
   return (
     <div>
       {dataType ? <div className="dataType">DataType: {dataType}</div> : ""}
