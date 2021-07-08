@@ -5,15 +5,15 @@ const JsonObjView = (props) => {
   let test = props.jsonData;
   let finalArr = [];
   let arrTemp = [];
-
   function resursiveJson(test) {
     for (let prop in test) {
-      if (typeof test[prop] == "object") {
+    if (typeof test[prop] == "object") {
         arrTemp.push(
           <div key={prop} contentEditable={false}>
             Object: {prop}
           </div>
         );
+        
         resursiveJson(test[prop]);
       } else {
         arrTemp.push(
@@ -25,7 +25,7 @@ const JsonObjView = (props) => {
                 </td>
                 <td>:</td>
                 <td className="jsonVal">
-                  <div contentEditable={false}>{test[prop]}</div>
+                  <div contentEditable={false}>{String(test[prop])}</div>
                 </td>
               </tr>
             </tbody>
@@ -34,7 +34,16 @@ const JsonObjView = (props) => {
       }
     }
   }
+  if(typeof(test)=='object')
   resursiveJson(test);
+  else{
+    arrTemp.push(
+      <div key={'test'} contentEditable={false}>
+    Object: {String(test)}
+    </div>
+    )
+    
+  }
   finalArr = arrTemp;
   
 

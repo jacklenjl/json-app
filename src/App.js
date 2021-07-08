@@ -15,11 +15,13 @@ function App() {
       return;
     }
     if (textAreaOne) {
+      
       try {
         let test = JSON.parse(textAreaOne);
         let typeTest = Array.isArray(test) ? "Array" : "";
 
         if (!typeTest) typeTest = typeof test;
+        
         setDataType(typeTest);
         setJsonFinal(test);
       } catch (e) {
@@ -68,7 +70,7 @@ function App() {
             </Label>
             <br />
             <div className="jsonViewer">
-              {dataType == "object" ? (
+              {dataType == "object"||dataType=='boolean'||dataType=='string'||dataType=='number'? (
                 <JsonObjView objType={dataType} jsonData={finalJson} />
               ) : (
                 ""

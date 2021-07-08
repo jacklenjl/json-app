@@ -25,7 +25,7 @@ const ArrayView = (props) => {
                 </td>
                 <td>:</td>
                 <td className="jsonVal">
-                  <div contentEditable={false}>{test[prop]}</div>
+                  <div contentEditable={false}>{String(test[prop])}</div>
                 </td>
               </tr>
             </tbody>
