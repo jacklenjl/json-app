@@ -2,8 +2,7 @@
 import "./App.css";
 import { Button, Input, Row, Col, Label } from "reactstrap";
 import { useState } from "react";
-import JsonObjView from "./components/JsonObjView";
-import ArrayView from "./components/ArrayView";
+import TreeView from "./components/TreeView";
 function App() {
   const [textAreaOne, setTextOne] = useState("");
   const [dataType, setDataType] = useState("");
@@ -70,13 +69,8 @@ function App() {
             </Label>
             <br />
             <div className="jsonViewer">
-              {dataType == "object"||dataType=='boolean'||dataType=='string'||dataType=='number'? (
-                <JsonObjView objType={dataType} jsonData={finalJson} />
-              ) : (
-                ""
-              )}
-              {dataType == "Array" ? (
-                <ArrayView objType={dataType} jsonData={finalJson} />
+              {dataType? (
+                <TreeView objType={dataType} jsonData={finalJson} />
               ) : (
                 ""
               )}

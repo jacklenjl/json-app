@@ -1,5 +1,6 @@
 import React from "react";
-const JsonObjView = (props) => {
+import { uuid } from 'uuidv4';
+const TreeView = (props) => {
   console.log("props", props);
   let dataType = props.objType;
   let test = props.jsonData;
@@ -7,17 +8,16 @@ const JsonObjView = (props) => {
   let arrTemp = [];
   function resursiveJson(test) {
     for (let prop in test) {
-    if (typeof test[prop] == "object") {
+      if (typeof test[prop] == "object") {
         arrTemp.push(
-          <div key={prop} contentEditable={false}>
+          <div key={uuid()} contentEditable={false}>
             Object: {prop}
           </div>
         );
-        
         resursiveJson(test[prop]);
       } else {
         arrTemp.push(
-          <table key={prop}>
+          <table key={uuid()}>
             <tbody>
               <tr>
                 <td className="objKey">
@@ -34,25 +34,36 @@ const JsonObjView = (props) => {
       }
     }
   }
-  if(typeof(test)=='object')
-  resursiveJson(test);
-  else{
+
+  if(dataType!=='Array'||dataType=='boolean'||dataType=='string'||dataType=='number'||dataType=='object')
+  { 
+    if(dataType=='object')
+    {
+      resursiveJson(test)
+    }else
     arrTemp.push(
-      <div key={'test'} contentEditable={false}>
+      <div key={uuid()} contentEditable={false}>
     Object: {String(test)}
     </div>
     )
-    
+  }else{
+    test.map((arrTest, index) => {
+      arrTemp.push(
+        <div key={uuid()} contentEditable={false}>
+          Index: {index}
+        </div>
+      );
+      resursiveJson(arrTest)
+     });
   }
-  finalArr = arrTemp;
   
-
+  finalArr = arrTemp;
   return (
-    <div className="jsonObj">
+    <div>
       {dataType ? <div className="dataType">DataType: {dataType}</div> : ""}
       {finalArr}
     </div>
   );
 };
 
-export default JsonObjView;
+export default TreeView;
