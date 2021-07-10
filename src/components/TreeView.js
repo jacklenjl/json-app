@@ -8,7 +8,7 @@ const TreeView = (props) => {
   let arrTemp = [];
   function resursiveJson(test) {
     for (let prop in test) {
-      if (typeof test[prop] == "object") {
+      if (typeof test[prop] === "object") {
         arrTemp.push(
           <div key={uuid()} contentEditable={false} style={{paddingLeft:"15%"}}>
             Object: {prop}
@@ -37,9 +37,9 @@ const TreeView = (props) => {
     }
   }
 
-  if(dataType!=='Array'||dataType=='boolean'||dataType=='string'||dataType=='number'||dataType=='object')
+  if(dataType!=='Array'||dataType==='boolean'||dataType==='string'||dataType==='number'||dataType==='object')
   { 
-    if(dataType=='object')
+    if(dataType==='object')
     {
       resursiveJson(test)
     }else

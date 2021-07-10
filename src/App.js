@@ -55,7 +55,7 @@ function App() {
         </Col>
         <Col md="2">
           <Button className="jsonParseBtn" color="danger" onClick={jsonParseEt}>
-            Json Parse
+            Tree View
           </Button>
           <br />
           <Button className="clearBtn" color="danger" onClick={clearEt}>
